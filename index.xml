@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cornea&#39;s Corner</title>
-    <link>https://corneascorner.dev/</link>
+    <link>https://www.corneascorner.dev/</link>
     <description>Recent content on Cornea&#39;s Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Cristian Cornea</copyright>
-    <lastBuildDate>Mon, 29 Apr 2024 20:55:00 +0000</lastBuildDate><atom:link href="https://corneascorner.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Apr 2024 20:55:00 +0000</lastBuildDate><atom:link href="https://www.corneascorner.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>composer autoload</title>
-      <link>https://corneascorner.dev/posts/2024-04-29-php-composer-autoload/</link>
+      <link>https://www.corneascorner.dev/posts/2024-04-29-php-composer-autoload/</link>
       <pubDate>Mon, 29 Apr 2024 20:55:00 +0000</pubDate>
       
-      <guid>https://corneascorner.dev/posts/2024-04-29-php-composer-autoload/</guid>
+      <guid>https://www.corneascorner.dev/posts/2024-04-29-php-composer-autoload/</guid>
       <description>composer autoload
 PSR-4 Under the psr-4 key you define a mapping from namespaces to paths, relative to the package root. When autoloading a class like Foo\\Bar\\Baz a namespace prefix Foo\\ pointing to a directory src/ means that the autoloader will look for a file named src/Bar/Baz.php and include it if present. Note that as opposed to the older PSR-0 style, the prefix (Foo\\) is not present in the file path.</description>
     </item>
