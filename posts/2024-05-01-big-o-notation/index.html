@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-brands-400.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-regular-400.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-solid-900.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2' as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Big-O Notation | Cornea&#39;s Corner</title>
+  <link rel='canonical' href='https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/'>
+  
+  <meta name="description" content="**Backend Dev** making Games in his spare time. Working on **Citizen** whenever I can, releasing some open source when it makes sense. **Preferred languages**: Odin &amp; Go.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Big-O Notation" />
+<meta property="og:description" content="Big-O is a framework for measuring the efficiency of an algorithm.
+Why bother? Big-O notation is used to describe the worst-case time complexity of an algorithm, so we can compare different algorithms and data structures and better predict their behavior as our input size increases.
+Types of Analysis To be able to analyze a given algorithm, we need to know which inputs take less time, and which take longer time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-01T11:37:33+02:00" />
+<meta property="article:modified_time" content="2024-05-01T11:37:33+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Big-O Notation"/>
+<meta name="twitter:description" content="Big-O is a framework for measuring the efficiency of an algorithm.
+Why bother? Big-O notation is used to describe the worst-case time complexity of an algorithm, so we can compare different algorithms and data structures and better predict their behavior as our input size increases.
+Types of Analysis To be able to analyze a given algorithm, we need to know which inputs take less time, and which take longer time."/>
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://www.corneascorner.dev/css/styles.50f238247efa10daf9d93ccb17815d1eb6f39a916f5536fd2a6a95ea517194051b16370701fb9903819844d98201ff55433dfdd5328eedee977d43056c3d0956.css" integrity="sha512-UPI4JH76ENr52TzLF4FdHrbzmpFvVTb9KmqV6lFxlAUbFjcHAfuZA4GYRNmCAf9VQz391TKO7e6XfUMFbD0JVg==">
+
+  
+  
+  
+<link rel="icon" type="image/png" href="https://www.corneascorner.dev/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"
+    aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/posts">Articles</a></li>
+        
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br />
+    <span id="actions">
+      <ul>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"
+            aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();"
+              onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();"
+              onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br />
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+  
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&text=Big-O%20Notation" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&title=Big-O%20Notation"
+      aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Big-O%20Notation&body=Check out this article: https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f"
+      aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&title=Big-O%20Notation" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon"
+      href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&name=Big-O%20Notation&description=Big-O%20is%20a%20framework%20for%20measuring%20the%20efficiency%20of%20an%20algorithm.%0aWhy%20bother%3f%20Big-O%20notation%20is%20used%20to%20describe%20the%20worst-case%20time%20complexity%20of%20an%20algorithm%2c%20so%20we%20can%20compare%20different%20algorithms%20and%20data%20structures%20and%20better%20predict%20their%20behavior%20as%20our%20input%20size%20increases.%0aTypes%20of%20Analysis%20To%20be%20able%20to%20analyze%20a%20given%20algorithm%2c%20we%20need%20to%20know%20which%20inputs%20take%20less%20time%2c%20and%20which%20take%20longer%20time."
+      aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#why-bother">Why bother?</a></li>
+      </ul>
+    </li>
+    <li><a href="#types-of-analysis">Types of Analysis</a>
+      <ul>
+        <li><a href="#complexity-cases">Complexity cases</a></li>
+        <li><a href="#performance-measuring">Performance measuring</a></li>
+        <li><a href="#asymptotic-analysis">Asymptotic Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#grow-rate-functions">Grow rate functions</a>
+      <ul>
+        <li><a href="#common-growth-rates">Common growth rates</a></li>
+        <li><a href="#the-king-of-kings">The king of kings</a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references--further-reading">References &amp; Further Reading</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+      <header>
+        <h1 class="posttitle" itemprop="name headline">
+          Big-O Notation
+        </h1>
+        <div class="meta">
+          
+          <div class="postdate">
+            
+            <time datetime="2024-05-01 11:37:33 &#43;0200 CEST" itemprop="datePublished">2024-05-01</time>
+            
+          </div>
+          
+          
+          <div class="article-read-time">
+            <i class="far fa-clock"></i>
+            
+            2 minute read
+          </div>
+          
+          
+          
+          <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/%20/tags/algorithm" rel="tag">algorithm</a>
+            
+          </div>
+          
+        </div>
+      </header>
+
+      
+      
+      <div class="content" itemprop="articleBody">
+        <p>Big-O is a framework for measuring the <strong>efficiency</strong> of an algorithm.</p>
+<h3 id="why-bother">Why bother?</h3>
+<p>Big-O notation is used to describe the <strong>worst-case</strong> time complexity of an algorithm, so we can compare different algorithms and data structures and better <strong>predict their behavior</strong> as our input size increases.</p>
+<h2 id="types-of-analysis">Types of Analysis</h2>
+<p>To be able to analyze a given algorithm, we need to know which inputs take <strong>less time</strong>, and which take <strong>longer time</strong>.</p>
+<h3 id="complexity-cases">Complexity cases</h3>
+<ul>
+<li>Worst case
+<ul>
+<li>Algorithm runs the slowest with the given input</li>
+</ul>
+</li>
+<li>Best case
+<ul>
+<li>Algorithm runs the fastest with the given input</li>
+</ul>
+</li>
+<li>Avergae case
+<ul>
+<li>Assumes input is random</li>
+<li>Run the algorithm many times with different inputs</li>
+</ul>
+</li>
+</ul>
+<h3 id="performance-measuring">Performance measuring</h3>
+<ul>
+<li>Time complexity
+<ul>
+<li>Amount of time taken to perform the task</li>
+</ul>
+</li>
+<li>Space complexity
+<ul>
+<li>Amount of memory needed to perform the task</li>
+</ul>
+</li>
+</ul>
+<h3 id="asymptotic-analysis">Asymptotic Analysis</h3>
+<p>Asymptotic analysis is a method used to describe the <strong>limiting behaviour</strong> of a function or algorithm as its argument approaches a particular value or infinity. It is <strong>input bound</strong>, all other factors are <strong>considered constant</strong>.</p>
+<h2 id="grow-rate-functions">Grow rate functions</h2>
+<p>With the analysis theory out of our way, we need to look at a way to describe the behavior of algorithms while the input gets larger.
+This relation is called the <strong>growth rate</strong>.</p>
+<h3 id="common-growth-rates">Common growth rates</h3>
+<p><img src="/img/common_growth_rates.png" alt="img"></p>
+<h3 id="the-king-of-kings">The king of kings</h3>
+<p>But there is also <strong>Constant Function: O(1)</strong> - which value doesn&rsquo;t change with input size.</p>
+<h3 id="examples">Examples</h3>
+<table>
+<thead>
+<tr>
+<th>Complexity</th>
+<th>Name</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Constant</td>
+<td>Adding an element to the front of a linked list</td>
+</tr>
+<tr>
+<td>logn</td>
+<td>Logarithmic</td>
+<td>Finding an element in a sorted array</td>
+</tr>
+<tr>
+<td>n</td>
+<td>Linear</td>
+<td>Finding an element in an unsorted array</td>
+</tr>
+<tr>
+<td>nlogn</td>
+<td>Linear Logarithmic</td>
+<td>Sorting n items by &lsquo;divide-and-conquer&rsquo;-Merhesort</td>
+</tr>
+<tr>
+<td>n2</td>
+<td>Quadratic</td>
+<td>Shortest path between two nodes in a graph</td>
+</tr>
+<tr>
+<td>n3</td>
+<td>Cubic</td>
+<td>Matrix Multiplication</td>
+</tr>
+<tr>
+<td>2n</td>
+<td>Exponential</td>
+<td>The Towers of Hanoi problem</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusion">Conclusion</h2>
+<p>While we can&rsquo;t always have O(1) it is important to know how costly our implementations are to be able to predict/prevent possible bottlenecks in our applications or refactor slow-performing code.</p>
+<h2 id="references--further-reading">References &amp; Further Reading</h2>
+<p><a href="https://en.wikipedia.org/wiki/Asymptotic_analysis/">Asymptotic analysis</a></p>
+<p><a href="https://towardsdatascience.com/understanding-time-complexity-with-python-examples-2bda6e8158a7">Understanding time complexity with Python examples</a></p>
+<p><a href="https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/">Big O Notation Tutorial - A Guide to Big O Analysis</a></p>
+
+      </div>
+    </article>
+
+    
+
+    <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Articles</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#why-bother">Why bother?</a></li>
+      </ul>
+    </li>
+    <li><a href="#types-of-analysis">Types of Analysis</a>
+      <ul>
+        <li><a href="#complexity-cases">Complexity cases</a></li>
+        <li><a href="#performance-measuring">Performance measuring</a></li>
+        <li><a href="#asymptotic-analysis">Asymptotic Analysis</a></li>
+      </ul>
+    </li>
+    <li><a href="#grow-rate-functions">Grow rate functions</a>
+      <ul>
+        <li><a href="#common-growth-rates">Common growth rates</a></li>
+        <li><a href="#the-king-of-kings">The king of kings</a></li>
+        <li><a href="#examples">Examples</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references--further-reading">References &amp; Further Reading</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+  
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&text=Big-O%20Notation" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&title=Big-O%20Notation"
+      aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Big-O%20Notation&body=Check out this article: https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f"
+      aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&title=Big-O%20Notation" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon"
+      href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-01-big-o-notation%2f&name=Big-O%20Notation&description=Big-O%20is%20a%20framework%20for%20measuring%20the%20efficiency%20of%20an%20algorithm.%0aWhy%20bother%3f%20Big-O%20notation%20is%20used%20to%20describe%20the%20worst-case%20time%20complexity%20of%20an%20algorithm%2c%20so%20we%20can%20compare%20different%20algorithms%20and%20data%20structures%20and%20better%20predict%20their%20behavior%20as%20our%20input%20size%20increases.%0aTypes%20of%20Analysis%20To%20be%20able%20to%20analyze%20a%20given%20algorithm%2c%20we%20need%20to%20know%20which%20inputs%20take%20less%20time%2c%20and%20which%20take%20longer%20time."
+      aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Cristian Cornea 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Articles</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+
+</html>

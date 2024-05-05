@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Cornea&#39;s Corner</title>
-    <link>https://www.corneascorner.dev/posts/</link>
-    <description>Recent content in Posts on Cornea&#39;s Corner</description>
+    <title>algorithm on Cornea&#39;s Corner</title>
+    <link>https://www.corneascorner.dev/tags/algorithm/</link>
+    <description>Recent content in algorithm on Cornea&#39;s Corner</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Cristian Cornea</copyright>
-    <lastBuildDate>Wed, 01 May 2024 11:37:33 +0200</lastBuildDate><atom:link href="https://www.corneascorner.dev/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 11:37:33 +0200</lastBuildDate><atom:link href="https://www.corneascorner.dev/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Big-O Notation</title>
       <link>https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/</link>

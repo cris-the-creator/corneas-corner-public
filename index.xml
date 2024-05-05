@@ -7,15 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Cristian Cornea</copyright>
-    <lastBuildDate>Mon, 29 Apr 2024 20:55:00 +0000</lastBuildDate><atom:link href="https://www.corneascorner.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 May 2024 11:37:33 +0200</lastBuildDate><atom:link href="https://www.corneascorner.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>composer autoload</title>
-      <link>https://www.corneascorner.dev/posts/2024-04-29-php-composer-autoload/</link>
-      <pubDate>Mon, 29 Apr 2024 20:55:00 +0000</pubDate>
+      <title>Big-O Notation</title>
+      <link>https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/</link>
+      <pubDate>Wed, 01 May 2024 11:37:33 +0200</pubDate>
       
-      <guid>https://www.corneascorner.dev/posts/2024-04-29-php-composer-autoload/</guid>
-      <description>composer autoload
-PSR-4 Under the psr-4 key you define a mapping from namespaces to paths, relative to the package root. When autoloading a class like Foo\\Bar\\Baz a namespace prefix Foo\\ pointing to a directory src/ means that the autoloader will look for a file named src/Bar/Baz.php and include it if present. Note that as opposed to the older PSR-0 style, the prefix (Foo\\) is not present in the file path.</description>
+      <guid>https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/</guid>
+      <description>Big-O is a framework for measuring the efficiency of an algorithm.
+Why bother? Big-O notation is used to describe the worst-case time complexity of an algorithm, so we can compare different algorithms and data structures and better predict their behavior as our input size increases.
+Types of Analysis To be able to analyze a given algorithm, we need to know which inputs take less time, and which take longer time.</description>
     </item>
     
   </channel>
