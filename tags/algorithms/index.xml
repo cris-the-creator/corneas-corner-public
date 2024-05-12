@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithms on Cornea&#39;s Corner</title>
+    <link>https://www.corneascorner.dev/tags/algorithms/</link>
+    <description>Recent content in algorithms on Cornea&#39;s Corner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Cristian Cornea</copyright>
+    <lastBuildDate>Wed, 01 May 2024 11:37:33 +0200</lastBuildDate><atom:link href="https://www.corneascorner.dev/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big-O Notation</title>
+      <link>https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/</link>
+      <pubDate>Wed, 01 May 2024 11:37:33 +0200</pubDate>
+      
+      <guid>https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/</guid>
+      <description>Big-O is a framework for measuring the efficiency of an algorithm.
+Why bother? Big-O notation is used to describe the worst-case time complexity of an algorithm, so we can compare different algorithms and data structures and better predict their behavior as our input size increases.
+Types of Analysis To be able to analyze a given algorithm, we need to know which inputs take less time, and which take longer time.</description>
+    </item>
+    
+  </channel>
+</rss>
