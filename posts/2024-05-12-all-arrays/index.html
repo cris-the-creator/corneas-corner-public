@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-brands-400.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-regular-400.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/font-awesome/webfonts/fa-solid-900.woff2' as="font" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" href='/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2' as="font"
+    type="font/woff2" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Arrays 101 | Cornea&#39;s Corner</title>
+  <link rel='canonical' href='https://www.corneascorner.dev/posts/2024-05-12-all-arrays/'>
+  
+  <meta name="description" content="**Backend Dev** making Games in his spare time. Working on **Citizen** whenever I can, releasing some open source when it makes sense. **Preferred languages**: Odin &amp; Go.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Arrays 101" />
+<meta property="og:description" content="Arrays are usefule, we all know that, they enable us to organize multiple items in one structure. But there is more to them.
+Efficient Memory Storing data in a sequential manner in computer memory allows arrays to be fast and efficient. And of course, there is also more to this, so lets look at a few array types to understand this subject better.
+Static Arrays Since arrays are stored in memory as a single, uninterrupted block, we must know their size at compile time." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.corneascorner.dev/posts/2024-05-12-all-arrays/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-12T16:08:21+02:00" />
+<meta property="article:modified_time" content="2024-05-12T16:08:21+02:00" />
+
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Arrays 101"/>
+<meta name="twitter:description" content="Arrays are usefule, we all know that, they enable us to organize multiple items in one structure. But there is more to them.
+Efficient Memory Storing data in a sequential manner in computer memory allows arrays to be fast and efficient. And of course, there is also more to this, so lets look at a few array types to understand this subject better.
+Static Arrays Since arrays are stored in memory as a single, uninterrupted block, we must know their size at compile time."/>
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://www.corneascorner.dev/css/styles.b573520438c8f01d8d334115ff3a64852c1bbb947c24193b7e53d88c5303d1d30dfbae3fa3c0e4ad734622825ea1e6a5e2bd223dd63a32686dda535c8e79a6c6.css" integrity="sha512-tXNSBDjI8B2NM0EV/zpkhSwbu5R8JBk7flPYjFMD0dMN&#43;64/o8DkrXNGIoJeoeal4r0iPdY6Mmht2lNcjnmmxg==">
+
+  
+  
+  
+<link rel="icon" type="image/png" href="https://www.corneascorner.dev/images/favicon.ico" />
+
+  
+  
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"
+    aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        
+        <li><a href="/">Home</a></li>
+        
+        <li><a href="/posts">Articles</a></li>
+        
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </span>
+    <br />
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.corneascorner.dev/posts/2024-05-01-big-o-notation/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();"
+              onmouseout="$('#i-prev').toggle();"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"
+            aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();"
+              onmouseout="$('#i-top').toggle();"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();"
+              onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br />
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+  
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&text=Arrays%20101" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&title=Arrays%20101"
+      aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Arrays%20101&body=Check out this article: https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f"
+      aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&title=Arrays%20101" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon"
+      href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&name=Arrays%20101&description=Arrays%20are%20usefule%2c%20we%20all%20know%20that%2c%20they%20enable%20us%20to%20organize%20multiple%20items%20in%20one%20structure.%20But%20there%20is%20more%20to%20them.%0aEfficient%20Memory%20Storing%20data%20in%20a%20sequential%20manner%20in%20computer%20memory%20allows%20arrays%20to%20be%20fast%20and%20efficient.%20And%20of%20course%2c%20there%20is%20also%20more%20to%20this%2c%20so%20lets%20look%20at%20a%20few%20array%20types%20to%20understand%20this%20subject%20better.%0aStatic%20Arrays%20Since%20arrays%20are%20stored%20in%20memory%20as%20a%20single%2c%20uninterrupted%20block%2c%20we%20must%20know%20their%20size%20at%20compile%20time."
+      aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#efficient-memory">Efficient Memory</a></li>
+      </ul>
+    </li>
+    <li><a href="#static-arrays">Static Arrays</a></li>
+    <li><a href="#sorted-arrays">Sorted Arrays</a></li>
+    <li><a href="#dynamic-arrays">Dynamic Arrays</a></li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+    <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+      <header>
+        <h1 class="posttitle" itemprop="name headline">
+          Arrays 101
+        </h1>
+        <div class="meta">
+          
+          <div class="postdate">
+            
+            <time datetime="2024-05-12 16:08:21 &#43;0200 CEST" itemprop="datePublished">2024-05-12</time>
+            
+          </div>
+          
+          
+          <div class="article-read-time">
+            <i class="far fa-clock"></i>
+            
+            2 minute read
+          </div>
+          
+          
+          
+          <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            
+            
+            <a class="tag-link" href="/%20/tags/data-structures" rel="tag">data-structures</a>
+            
+          </div>
+          
+        </div>
+      </header>
+
+      
+      
+      <div class="content" itemprop="articleBody">
+        <p>Arrays are usefule, we all know that, they enable us to organize <strong>multiple items</strong> in one structure. But there is more to them.</p>
+<h3 id="efficient-memory">Efficient Memory</h3>
+<p>Storing data in a sequential manner in computer memory allows arrays to be <strong>fast and efficient</strong>.
+And of course, there is <strong>also</strong> more to this, so lets look at a few array types to understand this subject better.</p>
+<h2 id="static-arrays">Static Arrays</h2>
+<p>Since arrays are stored in memory as a single, uninterrupted block, we must know their size at compile time. Needing their size also means we need to know the type, since a 32bit integer
+needs more space then a boolean, for example. Thus, static arrays must store data of the same type only.</p>
+<p>We can declare and initialize a static array like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#8be9fd;font-style:italic">var</span> array = <span style="color:#8be9fd;font-style:italic">new</span>([<span style="color:#bd93f9">4</span>]<span style="color:#8be9fd">int</span>) <span style="color:#6272a4">// empty array
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">var</span> array2 = [..]{<span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">3</span>}
+</code></pre></div><p>Now we have an <strong>array the size of 4 and of type int</strong> reserved in memory.</p>
+<p><img src="/img/array_memory.png" alt="img"></p>
+<p>The downside of the static array is that everytime we want to <strong>allocate more then 4 values</strong>, we have to also create a <strong>new array</strong> (and copy the data from our
+old array over). Which can be slow, if done too often.</p>
+<h2 id="sorted-arrays">Sorted Arrays</h2>
+<p>Sometimes we need our array ordered in a specific way. If we use Go (and Go&rsquo;s slices for that matter) its as simple as calling the sort.Slice function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>a <span style="color:#ff79c6">:=</span> []<span style="color:#8be9fd">int</span>{<span style="color:#bd93f9">2</span>, <span style="color:#bd93f9">4</span>, <span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">3</span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>sort.<span style="color:#50fa7b">Slice</span>(a, <span style="color:#8be9fd;font-style:italic">func</span>(i, j <span style="color:#8be9fd">int</span>) <span style="color:#8be9fd">bool</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#ff79c6">return</span> a[i] &lt; a[j]
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>})
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#6272a4">// will sort to: 0, 2, 3, 4
+</span></code></pre></div><p>But what if we want to add the number 1 to our sorted array? We would need to either call sort.Slice again, or build our own little insertion sort algorithm (note that go sort.Slice
+does not use insertion algorithm but the pattern-defeating quicksort by Orson Peters).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#8be9fd;font-style:italic">func</span> <span style="color:#50fa7b">insertionSort</span>(arr []<span style="color:#8be9fd">int</span>) []<span style="color:#8be9fd">int</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    <span style="color:#ff79c6">for</span> i <span style="color:#ff79c6">:=</span> <span style="color:#bd93f9">0</span>, i &lt; <span style="color:#8be9fd;font-style:italic">len</span>(arr); i<span style="color:#ff79c6">++</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>        <span style="color:#ff79c6">for</span> j <span style="color:#ff79c6">:=</span> i; j &gt; <span style="color:#bd93f9">0</span> <span style="color:#ff79c6">&amp;&amp;</span> arr[j<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>] &gt; arr[j]; j<span style="color:#ff79c6">--</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>            arr[j], arr[j<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>] = arr[j<span style="color:#ff79c6">-</span><span style="color:#bd93f9">1</span>], arr[j]
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>        }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#ff79c6">return</span> arr
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>},
+</code></pre></div><p>Here&rsquo;s what is happening:
+<img src="/img/insertion_sort.png" alt="img"></p>
+<p>Worst case complexity of insertion sort is O(n^2). I have a post about <a href="/posts/2024-05-01-big-o-notation">Big-O Complexity</a> if you want to look it up.
+Insertion sort is very easy to implement, but sadly not very useful as it is just too slow for general-purpose production use.</p>
+<h2 id="dynamic-arrays">Dynamic Arrays</h2>
+<p>On my todo &hellip;</p>
+
+      </div>
+    </article>
+
+    
+
+    <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Articles</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#efficient-memory">Efficient Memory</a></li>
+      </ul>
+    </li>
+    <li><a href="#static-arrays">Static Arrays</a></li>
+    <li><a href="#sorted-arrays">Sorted Arrays</a></li>
+    <li><a href="#dynamic-arrays">Dynamic Arrays</a></li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+  
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&text=Arrays%20101" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&title=Arrays%20101"
+      aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=Arrays%20101&body=Check out this article: https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f"
+      aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&title=Arrays%20101" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon"
+      href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.corneascorner.dev%2fposts%2f2024-05-12-all-arrays%2f&name=Arrays%20101&description=Arrays%20are%20usefule%2c%20we%20all%20know%20that%2c%20they%20enable%20us%20to%20organize%20multiple%20items%20in%20one%20structure.%20But%20there%20is%20more%20to%20them.%0aEfficient%20Memory%20Storing%20data%20in%20a%20sequential%20manner%20in%20computer%20memory%20allows%20arrays%20to%20be%20fast%20and%20efficient.%20And%20of%20course%2c%20there%20is%20also%20more%20to%20this%2c%20so%20lets%20look%20at%20a%20few%20array%20types%20to%20understand%20this%20subject%20better.%0aStatic%20Arrays%20Since%20arrays%20are%20stored%20in%20memory%20as%20a%20single%2c%20uninterrupted%20block%2c%20we%20must%20know%20their%20size%20at%20compile%20time."
+      aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2024  Cristian Cornea 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Articles</a></li>
+         
+        <li><a href="/tags">Tags</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+
+
+
+
+
+</html>
