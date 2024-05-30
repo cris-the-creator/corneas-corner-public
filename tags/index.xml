@@ -4,27 +4,24 @@
     <title>Tags on Cornea&#39;s Corner</title>
     <link>https://www.corneascorner.dev/tags/</link>
     <description>Recent content in Tags on Cornea&#39;s Corner</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Cristian Cornea</copyright>
-    <lastBuildDate>Sun, 12 May 2024 16:08:21 +0200</lastBuildDate><atom:link href="https://www.corneascorner.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 May 2024 16:08:21 +0200</lastBuildDate>
+    <atom:link href="https://www.corneascorner.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>data-structures</title>
+      <title>Data-Structures</title>
       <link>https://www.corneascorner.dev/tags/data-structures/</link>
-      <pubDate>Sun, 12 May 2024 16:08:21 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.corneascorner.dev/tags/data-structures/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>algorithms</title>
+      <title>Algorithms</title>
       <link>https://www.corneascorner.dev/tags/algorithms/</link>
-      <pubDate>Wed, 01 May 2024 11:37:33 +0200</pubDate>
-      
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://www.corneascorner.dev/tags/algorithms/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

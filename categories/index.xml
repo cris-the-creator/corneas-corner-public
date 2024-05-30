@@ -4,8 +4,9 @@
     <title>Categories on Cornea&#39;s Corner</title>
     <link>https://www.corneascorner.dev/categories/</link>
     <description>Recent content in Categories on Cornea&#39;s Corner</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <copyright>Cristian Cornea</copyright><atom:link href="https://www.corneascorner.dev/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Cristian Cornea</copyright>
+    <atom:link href="https://www.corneascorner.dev/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
